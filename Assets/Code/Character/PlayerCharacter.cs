@@ -8,8 +8,9 @@ public class PlayerCharacter : Character
     [SerializeField] private PlayerCharacterInput inputActions;
     public PlayerCharacterInput InputActions { get => inputActions; set => inputActions = value; }
 
-    [SerializeField] private Vector2 moveAxis;
-    public Vector2 MoveAxis { get => moveAxis; set => moveAxis = value; }
+
+    [SerializeField] private CharacterController characterController;
+    public CharacterController CharacterController { get => characterController; set => characterController = value; }
 
     [SerializeField] private float moveSpeed;
     public override float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
@@ -17,7 +18,7 @@ public class PlayerCharacter : Character
     [SerializeField] private float rotationSpeed;
     public override float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
 
-#region Monobehaviour
+    #region Monobehaviour
     private void Awake()
     {
         inputActions = new PlayerCharacterInput();
@@ -50,20 +51,28 @@ public class PlayerCharacter : Character
             Move(new Vector3(inputVector.x, 0.0f, inputVector.y));
         }
     }
-#endregion
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+    }
+    #endregion
 
-#region Methods
+
+    #region Methods
 
     public override void Move(Vector3 vector)
     {
         if (vector.sqrMagnitude < 0.01)
             return;
-        transform.position += vector * (moveSpeed * Time.deltaTime);
-        
+        characterController.Move(vector * (moveSpeed * Time.deltaTime));
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(vector), rotationSpeed * Time.deltaTime);
     }
 
-#endregion
+    public void OnInteract()
+    {
+        
+    }
+    #endregion
 
 
 }
