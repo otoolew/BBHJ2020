@@ -526,9 +526,9 @@ public class @PlayerCharacterInput : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""2fc3351e-c841-4844-936f-882b5746e752"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Key"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -546,7 +546,7 @@ public class @PlayerCharacterInput : IInputActionCollection, IDisposable
                     ""name"": ""WASD"",
                     ""id"": ""4ca172a7-243f-47e8-b102-e8209afd5f42"",
                     ""path"": ""2DVector"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
