@@ -10,13 +10,13 @@ public class PlayerCharacter : Character {
     [SerializeField] protected CharacterController _characterController;
     public CharacterController CharacterController { get => _characterController; set => _characterController = value; }
 
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _moveSpeed = 10;
     public override float MoveSpeed { get => _moveSpeed; }
 
-    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _maxSpeed = 10;
     public override float MaxSpeed { get => _maxSpeed; }
 
-    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _rotationSpeed = 30;
     public override float RotationSpeed { get => _rotationSpeed; }
 
     #region Monobehaviour
