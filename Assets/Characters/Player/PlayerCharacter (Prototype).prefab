@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7084013346535919475}
-  - component: {fileID: 7084013346535919476}
+  - component: {fileID: 7741518998714180333}
   - component: {fileID: 7084013346535919474}
+  - component: {fileID: 7084013346535919476}
   m_Layer: 0
   m_Name: PlayerCharacter (Prototype)
   m_TagString: Untagged
@@ -33,21 +34,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7084013346535919476
-MonoBehaviour:
+--- !u!95 &7741518998714180333
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7084013346535919477}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17d5f786b374dcf42b2bdcb6b5118133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAxis: {x: 0, y: 0}
-  moveSpeed: 10
-  rotationSpeed: 30
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5bfa76fe5fd0e5445b45aef89d7bc5d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &7084013346535919474
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -62,6 +67,23 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &7084013346535919476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084013346535919477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d5f786b374dcf42b2bdcb6b5118133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 0}
+  _characterAnimator: {fileID: 0}
+  _moveSpeed: 10
+  _maxSpeed: 10
+  _rotationSpeed: 30
 --- !u!1001 &2197673016834418617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,7 +94,7 @@ PrefabInstance:
     - target: {fileID: 236689309969703437, guid: e4d7b420a44e2ec44939315f726a57c2,
         type: 3}
       propertyPath: m_Name
-      value: PrototypeModel
+      value: Body
       objectReference: {fileID: 0}
     - target: {fileID: 3820489299870784030, guid: e4d7b420a44e2ec44939315f726a57c2,
         type: 3}
@@ -127,7 +149,7 @@ PrefabInstance:
     - target: {fileID: 3820489299870784030, guid: e4d7b420a44e2ec44939315f726a57c2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -12.907001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4d7b420a44e2ec44939315f726a57c2, type: 3}
