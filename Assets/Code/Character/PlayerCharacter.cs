@@ -2,60 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class PlayerCharacter : Character {
+[RequireComponent(typeof(CharacterController))]
+public class PlayerCharacter : Character 
+{
     [SerializeField] private PlayerCharacterInput inputActions;
     public PlayerCharacterInput InputActions { get => inputActions; set => inputActions = value; }
 
-    [SerializeField] protected CharacterController _characterController;
-    public CharacterController CharacterController { get => _characterController; set => _characterController = value; }
+    [SerializeField] private CharacterController characterController;
+    public CharacterController CharacterController { get => characterController; set => characterController = value; }
 
-    [SerializeField] private float _moveSpeed = 10;
-    public override float MoveSpeed { get => _moveSpeed; }
+    [SerializeField] private Animator animator;
+    public override Animator Animator { get => animator; set => animator = value; }
 
-    [SerializeField] private float _maxSpeed = 10;
-    public override float MaxSpeed { get => _maxSpeed; }
+    [SerializeField] private float moveSpeed = 10;
+    public override float MoveSpeed { get => moveSpeed; }
 
-    [SerializeField] private float _rotationSpeed = 30;
-    public override float RotationSpeed { get => _rotationSpeed; }
+    //[SerializeField] private float _maxSpeed = 10;
+    //public override float MaxSpeed { get => _maxSpeed; }
+
+    [SerializeField] private float rotationSpeed = 30;
+    public override float RotationSpeed { get => rotationSpeed; }
 
     #region Monobehaviour
-    protected override void Awake() {
-        base.Awake();
-
+    protected void Awake() 
+    {
         inputActions = new PlayerCharacterInput();
-        //inputActions.PlayerCharacter.Movement.performed += OnMove;
+        inputActions.PlayerCharacter.Interact.performed += OnInteract;
     }
-    private void OnEnable() {
+    private void OnEnable() 
+    {
         inputActions.PlayerCharacter.Enable();
     }
-    private void OnDisable() {
+    private void OnDisable() 
+    {
         inputActions.PlayerCharacter.Disable();
     }
-    private void OnDestroy() {
+    private void OnDestroy() 
+    {
         //inputActions.PlayerCharacter.Movement.performed -= OnMove;
     }
 
     // Start is called before the first frame update
-    void Start() {
+    void Start() 
+    {
 
     }
 
     // Update is called once per frame
-    protected override void Update() {
-        base.Update();
-
+    protected void Update() 
+    {
         Vector2 inputVector = inputActions.PlayerCharacter.Movement.ReadValue<Vector2>();
-        if (inputVector != Vector2.zero) {
-            Move(new Vector3(inputVector.x, 0.0f, inputVector.y));
-        }
-
-        UpdateAnimation();
+        Move(new Vector3(inputVector.x, 0.0f, inputVector.y));
     }
 
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log(other.gameObject.name);
-    }
+    //private void OnTriggerEnter(Collider other) 
+    //{
+    //    Debug.Log(other.gameObject.name);
+    //}
     #endregion
 
 
@@ -64,32 +67,32 @@ public class PlayerCharacter : Character {
     /// Moves the specified vector.
     /// </summary>
     /// <param name="vector">The vector.</param>
-    protected virtual void Move(Vector3 vector) {
-        if (vector.sqrMagnitude < 0.01) {
-            Velocity = Vector3.zero;
-            ActiveSpeed = 0;
-            ActiveMoveRate = 0;
-            return;
+    protected virtual void Move(Vector3 vector) 
+    {
+        Vector3 scaledValue = vector * MoveSpeed;
+        characterController.Move(scaledValue * Time.deltaTime);
+        if(vector != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(vector), RotationSpeed * Time.deltaTime);
         }
-
-        Velocity = vector * MoveSpeed;
-        ActiveSpeed = Velocity.magnitude;
-        if (ActiveSpeed > MaxSpeed) {
-            float reduction = MaxSpeed / ActiveSpeed;
-            Velocity *= reduction;
-            ActiveSpeed = MaxSpeed;
-        }
-        ActiveMoveRate = Mathf.Clamp(ActiveSpeed / MaxSpeed, 0f, 1f);
-
-        _characterController.Move(Velocity * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(vector), RotationSpeed * Time.deltaTime);
+        MoveAnimation(scaledValue.magnitude);
     }
 
+    public override void MoveAnimation(float value)
+    {
+        Animator.SetFloat("MoveRate", value);
+    }
+
+    public void RoarAnimation(bool value)
+    {
+        Animator.SetBool("Roar", value);
+    }
     /// <summary>
     /// Called when [interact].
     /// </summary>
-    public void OnInteract() {
-
+    public void OnInteract(InputAction.CallbackContext callbackContext) 
+    {
+        Debug.Log("Player Interaction!");
     }
     #endregion
 }

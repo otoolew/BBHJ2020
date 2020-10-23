@@ -596,6 +596,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ScareConsole",
+            "id": "e2663008-f7ee-4dda-91c3-8f387b334341",
+            "actions": [
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "7a28df4e-fcce-47d0-9030-35792da83443",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f894fae4-c07a-4c46-a14b-653b314df98c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

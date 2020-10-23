@@ -6,7 +6,7 @@ using UnityEngine;
 public class NpcGroupWaveData : ScriptableObject {
     [System.Serializable]
     public class GroupWave {
-        public NpcGroupData group;
+        public NpcGroup group;
         public int minWaveTime = 30;
     }
 
