@@ -609,6 +609,33 @@ public class @PlayerCharacterInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ScareConsole"",
+            ""id"": ""e2663008-f7ee-4dda-91c3-8f387b334341"",
+            ""actions"": [
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a28df4e-fcce-47d0-9030-35792da83443"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f894fae4-c07a-4c46-a14b-653b314df98c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -629,6 +656,9 @@ public class @PlayerCharacterInput : IInputActionCollection, IDisposable
         m_PlayerCharacter = asset.FindActionMap("PlayerCharacter", throwIfNotFound: true);
         m_PlayerCharacter_Movement = m_PlayerCharacter.FindAction("Movement", throwIfNotFound: true);
         m_PlayerCharacter_Interact = m_PlayerCharacter.FindAction("Interact", throwIfNotFound: true);
+        // ScareConsole
+        m_ScareConsole = asset.FindActionMap("ScareConsole", throwIfNotFound: true);
+        m_ScareConsole_Fire = m_ScareConsole.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -820,6 +850,39 @@ public class @PlayerCharacterInput : IInputActionCollection, IDisposable
         }
     }
     public PlayerCharacterActions @PlayerCharacter => new PlayerCharacterActions(this);
+
+    // ScareConsole
+    private readonly InputActionMap m_ScareConsole;
+    private IScareConsoleActions m_ScareConsoleActionsCallbackInterface;
+    private readonly InputAction m_ScareConsole_Fire;
+    public struct ScareConsoleActions
+    {
+        private @PlayerCharacterInput m_Wrapper;
+        public ScareConsoleActions(@PlayerCharacterInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Fire => m_Wrapper.m_ScareConsole_Fire;
+        public InputActionMap Get() { return m_Wrapper.m_ScareConsole; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ScareConsoleActions set) { return set.Get(); }
+        public void SetCallbacks(IScareConsoleActions instance)
+        {
+            if (m_Wrapper.m_ScareConsoleActionsCallbackInterface != null)
+            {
+                @Fire.started -= m_Wrapper.m_ScareConsoleActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_ScareConsoleActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_ScareConsoleActionsCallbackInterface.OnFire;
+            }
+            m_Wrapper.m_ScareConsoleActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+            }
+        }
+    }
+    public ScareConsoleActions @ScareConsole => new ScareConsoleActions(this);
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
@@ -837,5 +900,9 @@ public class @PlayerCharacterInput : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IScareConsoleActions
+    {
+        void OnFire(InputAction.CallbackContext context);
     }
 }

@@ -55,10 +55,10 @@ public class PlayerCharacter : Character
         Move(new Vector3(inputVector.x, 0.0f, inputVector.y));
     }
 
-    private void OnTriggerEnter(Collider other) 
-    {
-        Debug.Log(other.gameObject.name);
-    }
+    //private void OnTriggerEnter(Collider other) 
+    //{
+    //    Debug.Log(other.gameObject.name);
+    //}
     #endregion
 
 
