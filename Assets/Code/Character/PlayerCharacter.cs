@@ -82,6 +82,11 @@ public class PlayerCharacter : Character
     {
         Animator.SetFloat("MoveRate", value);
     }
+
+    public void RoarAnimation(bool value)
+    {
+        Animator.SetBool("Roar", value);
+    }
     /// <summary>
     /// Called when [interact].
     /// </summary>
