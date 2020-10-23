@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxScarePoints: 5
   targetScareLevel: 1
-  characters: []
+  characters:
+  - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
+  - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
+  - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
+  - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
