@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,15 @@ public class ScareConsole : MonoBehaviour
 
     [SerializeField] private Light consoleLight;
     public Light ConsoleLight { get => consoleLight; set => consoleLight = value; }
+
+    [SerializeField] private Timer cooldownTimer;
+    public Timer CooldownTimer { get => cooldownTimer; set => cooldownTimer = value; }
+
+    [SerializeField] private TMP_Text status_Text;
+    public TMP_Text Status_Text { get => status_Text; set => status_Text = value; }
+
+    [SerializeField] private TMP_Text count_Text;
+    public TMP_Text Count_Text { get => count_Text; set => count_Text = value; }
 
     [SerializeField] private ScareAttraction scareAttraction;
     public ScareAttraction ScareAttraction { get => scareAttraction; set => scareAttraction = value; }
@@ -32,11 +42,27 @@ public class ScareConsole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        count_Text.text = cooldownTimer.GetIntTime().ToString();
+        if(cooldownTimer.Finished == true)
+        {
+            status_Text.text = "READY";
+            count_Text.text = "";
+        }
     }
+
     private void OnFire(InputAction.CallbackContext callbackContext)
     {
         Debug.Log(gameObject.name + " Interaction!");
+        if (cooldownTimer.Finished)
+        {
+            scareAttraction.FireScare();
+            cooldownTimer.ResetTimer();
+        }
+        else
+        {
+            Debug.Log("Not Ready To Fire Scare");
+        }
+
     }
     private void OnTriggerEnter(Collider other)
     {
