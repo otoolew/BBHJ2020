@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 60076569}
   - component: {fileID: 60076568}
   m_Layer: 0
-  m_Name: ScareConsole (1)
+  m_Name: ScareConsole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
