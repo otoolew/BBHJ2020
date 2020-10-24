@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
-    characterCount: 4
+    characterCount: 1
     minWaveTime: 1
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
-    characterCount: 6
+    characterCount: 4
     minWaveTime: 10
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
     characterCount: 3
@@ -26,5 +26,5 @@ MonoBehaviour:
     characterCount: 5
     minWaveTime: 10
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
-    characterCount: 4
+    characterCount: 2
     minWaveTime: 10
