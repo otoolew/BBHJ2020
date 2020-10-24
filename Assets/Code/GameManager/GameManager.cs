@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     public int MaxActiveGroupCount { get => _maxActiveGroupCount; set => _maxActiveGroupCount = value; }
 
     public bool IsGameActive { get; private set; }
-    public float CurrentFearAmount { get; private set; }
+    public float CurrentFearAmount { get; set; }
 
     public int NextSpawnIndex { get; private set; }
     public float NextSpawnTimer { get; private set; }
