@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 102458580908938016}
   - component: {fileID: 5340542078749282226}
   - component: {fileID: 5340542078749282227}
+  - component: {fileID: 4003992091771633940}
   m_Layer: 0
   m_Name: ScareConsole
   m_TagString: Untagged
@@ -409,6 +410,7 @@ Transform:
   m_Children:
   - {fileID: 5591170304181056925}
   - {fileID: 2079416364919079213}
+  - {fileID: 2216099046212877702}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -445,7 +447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 102458580908938016}
   consoleLight: {fileID: 8078850076528209236}
-  scareAttraction: {fileID: 0}
+  cooldownTimer: {fileID: 4003992091771633940}
+  scareAttraction: {fileID: 6793983879771182562}
 --- !u!65 &5340542078749282227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -459,3 +462,179 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: -0.2}
+--- !u!114 &4003992091771633940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340542078749282225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb1f01afb8dcb141a58eeff00ff3bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTime: 5
+  count: 0
+  finished: 0
+  loopTimer: 0
+--- !u!1 &8567166643787091475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2216099046212877702}
+  - component: {fileID: 6793983879771182562}
+  - component: {fileID: 25034226711691611}
+  - component: {fileID: 8436124186681075205}
+  m_Layer: 0
+  m_Name: ScareAttraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2216099046212877702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567166643787091475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2913709159750562952}
+  m_Father: {fileID: 5340542078749282224}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6793983879771182562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567166643787091475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d0ccba66aff4c47bb6572d9ee3ec8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 25034226711691611}
+  scareCollider: {fileID: 8436124186681075205}
+  isActive: 0
+  scareObj: {fileID: 1409519222976630385}
+--- !u!114 &25034226711691611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567166643787091475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb1f01afb8dcb141a58eeff00ff3bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTime: 5
+  count: 0
+  finished: 0
+  loopTimer: 0
+--- !u!135 &8436124186681075205
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567166643787091475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 1.81, z: 1.61}
+--- !u!1001 &7441924381962317508
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2216099046212877702}
+    m_Modifications:
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415143613854769333, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Scare_Bats_P
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0cdd4841ecb4c845ae25981fd94a2b3, type: 3}
+--- !u!1 &1409519222976630385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8415143613854769333, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7441924381962317508}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2913709159750562952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5703973584051198540, guid: e0cdd4841ecb4c845ae25981fd94a2b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7441924381962317508}
+  m_PrefabAsset: {fileID: 0}

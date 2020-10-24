@@ -2,17 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapScare : MonoBehaviour
+public class TrapScare : ScareAttraction
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Timer timer;
+    public Timer Timer { get => timer; set => timer = value; }
+
+    [SerializeField] private SphereCollider scareCollider;
+    public SphereCollider ScareCollider { get => scareCollider; set => scareCollider = value; }
+
+    [SerializeField] private bool isActive;
+    public bool IsActive { get => isActive; set => isActive = value; }
+
+    [SerializeField] private TrapTrigger trapTrigger;
+    public TrapTrigger TrapTrigger { get => trapTrigger; set => trapTrigger = value; }
+
+    private void Start()
     {
-        
+        scareCollider.enabled = false;
+        trapTrigger.TrapCollider.enabled = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (timer.Finished)
+        {
+            scareCollider.enabled = false;
+            isActive = false;
+            trapTrigger.TrapCollider.enabled = true;
+        }
+        else
+        {
+            scareCollider.enabled = true;
+            isActive = true;
+            trapTrigger.TrapCollider.enabled = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        NpcCharacter npcCharacter = other.GetComponent<NpcCharacter>();
+        if (npcCharacter != null)
+        {
+            Debug.Log(npcCharacter.name + " Was Scared!");
+            FireScare();
+        }
+    }
+
+    public override void FireScare()
+    {
+
+        scareCollider.enabled = true;
+        isActive = true;
+        timer.ResetTimer();
     }
 }
