@@ -2,11 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ScareAttraction : MonoBehaviour
+public class ScareAttraction : MonoBehaviour
 {
-    public abstract Timer Timer { get; set; }
-    public abstract SphereCollider ScareCollider { get; set; }
-    public abstract bool IsActive { get; set; }
-    public abstract void FireScare();
+    [SerializeField] private Timer timer;
+    public Timer Timer { get => timer; set => timer = value; }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public virtual void FireScare()
+    {
+        Debug.Log("Fire Scare");
+    }
+    //public void OnTimerFinished(bool value)
+    //{
+    //    isReady = value;
+    //}
 }
