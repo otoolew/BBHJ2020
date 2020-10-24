@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed0c8e138f3ca34b9634833963c1802, type: 3}
   m_Name: CharacterNpcData
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1.5
   rotationSpeed: 180

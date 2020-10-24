@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8767121117271302126}
   - component: {fileID: 8320641909568478145}
   m_Layer: 0
-  m_Name: PrototypeGroup
+  m_Name: NpcGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navAgent: {fileID: 8320641909568478145}
   _groupData: {fileID: 11400000, guid: 949573126825c804b85575a8d67e2224, type: 2}
+  _fearDelayTime: 2
 --- !u!195 &8320641909568478145
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -55,8 +56,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1874895178442850782}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.01
-  m_Speed: 3.5
+  m_Radius: 0.02
+  m_Speed: 1.6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

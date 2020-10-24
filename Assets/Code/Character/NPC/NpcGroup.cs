@@ -23,12 +23,17 @@ public class NpcGroup : MonoBehaviour {
         CurrentPathPoint = null;
     }
 
+    protected void Start() {
+        CurrentPathPoint = GameManager.Instance.PathwayPoints[0];
+        _navAgent.SetDestination(CurrentPathPoint.transform.position);
+    }
+
     protected void Update() {
-        if (CurrentPathPoint == null) {
-            GameManager.Instance.DespawnGroup(this);
-        }
-        else if (_navAgent.isStopped || !_navAgent.hasPath) {
+        if (_navAgent.isStopped || !_navAgent.hasPath || _navAgent.pathStatus == NavMeshPathStatus.PathComplete) {
             MoveToNextPoint();
+            if (CurrentPathPoint == null) {
+                GameManager.Instance.DespawnGroup(this);
+            }
         }
 
         if (_fearDelay) {
@@ -90,13 +95,7 @@ public class NpcGroup : MonoBehaviour {
 
     #region Private Methods
     private void MoveToNextPoint() {
-        if (CurrentPathPoint == null) {
-            CurrentPathPoint = GameManager.Instance.PathwayPoints[0];
-        }
-        else {
-            CurrentPathPoint = CurrentPathPoint.NextPoint;
-        }
-
+        CurrentPathPoint = CurrentPathPoint.NextPoint;
         if (CurrentPathPoint == null) {
             _navAgent.isStopped = true;
             return;
