@@ -6,10 +6,15 @@ public class NpcGroup : MonoBehaviour {
     #region Declarations
     [SerializeField] private NavMeshAgent _navAgent = null;
     [SerializeField] private NpcGroupData _groupData;
+    [SerializeField] private float _fearDelayTime = 2f;
     public NpcGroupData GroupData { get => _groupData; set => _groupData = value; }
 
     public NpcCharacter[] ActiveCharacters { get; private set; }
     public NpcPathwayPoint CurrentPathPoint { get; private set; }
+    public float GroupFearTotal { get; private set; }
+
+    private bool _fearDelay;
+    private float _fearDelayTimer;
     #endregion
 
     #region MonoBehavior Overrides
@@ -24,6 +29,17 @@ public class NpcGroup : MonoBehaviour {
         }
         else if (_navAgent.isStopped || !_navAgent.hasPath) {
             MoveToNextPoint();
+        }
+
+        if (_fearDelay) {
+            _fearDelayTimer += Time.deltaTime;
+            if (_fearDelayTimer >= _fearDelayTime) {
+                _fearDelay = false;
+                _fearDelayTimer = 0;
+
+                _navAgent.isStopped = false;
+                _navAgent.SetDestination(CurrentPathPoint.transform.position);
+            }
         }
     }
     #endregion
@@ -51,10 +67,24 @@ public class NpcGroup : MonoBehaviour {
     }
 
     public void DestroyGroup() {
+        GameManager.Instance.CurrentFearAmount += GroupFearTotal;
+
         for (int x=0; x < ActiveCharacters.Length; x++) {
             Destroy(ActiveCharacters[x].gameObject);
         }
         Destroy(gameObject);
+    }
+
+    public void AddFearValue(float fearAmount) {
+        GroupFearTotal += fearAmount;
+
+        if (!_fearDelay) {
+            _navAgent.isStopped = true;
+            _fearDelay = true;
+        }
+        else {
+            _fearDelayTimer = 0f;
+        }
     }
     #endregion
 
