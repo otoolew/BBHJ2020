@@ -45,17 +45,17 @@ public class NpcGroup : MonoBehaviour {
     #endregion
 
     #region Public Methods
-    public void SpawnGroup(GroupSpawnPoint spawn) {
+    public void SpawnGroup(GroupSpawnPoint spawn, int characterCount) {
         List<NpcCharacter> characters = new List<NpcCharacter>();
         List<GameObject> availableSpawns = new List<GameObject>(spawn.spawnPoints);
 
         // Spawn each character
-        for (int x=0; x < _groupData.characters.Length; x++) {
+        for (int x=0; x < characterCount; x++) {
             int spawnIndex = Random.Range(0, availableSpawns.Count);
             Vector3 spawnPos = availableSpawns[spawnIndex].transform.position;
             availableSpawns.RemoveAt(spawnIndex);
 
-            var spawnedChar = GameObject.Instantiate(_groupData.characters[x], spawnPos, transform.rotation);
+            var spawnedChar = GameObject.Instantiate(_groupData.characters[Random.Range(0, _groupData.characters.Length)], spawnPos, transform.rotation);
             spawnedChar.gameObject.name = gameObject.name + $"_Character{x+1}";
             spawnedChar.SetupCharacterGroup(this);
             characters.Add(spawnedChar);

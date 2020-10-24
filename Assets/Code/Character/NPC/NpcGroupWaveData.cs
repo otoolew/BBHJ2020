@@ -7,6 +7,7 @@ public class NpcGroupWaveData : ScriptableObject {
     [System.Serializable]
     public class GroupWave {
         public NpcGroup group;
+        public int characterCount = 4;
         public int minWaveTime = 30;
     }
 

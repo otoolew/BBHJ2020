@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour {
         }
 
         NpcGroup nextGroup = _waveData.waves[NextSpawnIndex].group;
+        int charCount = _waveData.waves[NextSpawnIndex].characterCount;
 
         if (nextGroup == null) { return null; }
 
@@ -159,7 +160,7 @@ public class GameManager : MonoBehaviour {
 
         nextGroup = GameObject.Instantiate(nextGroup, _groupSpawnPoint.transform.position, Quaternion.identity);
         nextGroup.name = $"Group{NextSpawnIndex}";
-        nextGroup.SpawnGroup(_groupSpawnPoint);
+        nextGroup.SpawnGroup(_groupSpawnPoint, charCount);
         _activeGroups.Add(nextGroup);
 
         GroupSpawned?.Invoke(nextGroup);
