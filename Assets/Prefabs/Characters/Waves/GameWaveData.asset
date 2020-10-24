@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0052e39b2e8191744881e864618c1f3a, type: 3}
-  m_Name: PrototypeWaveData
+  m_Name: GameWaveData
   m_EditorClassIdentifier: 
   waves:
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
+    characterCount: 4
     minWaveTime: 1
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
+    characterCount: 4
     minWaveTime: 10
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
+    characterCount: 4
     minWaveTime: 10
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
+    characterCount: 4
     minWaveTime: 10
   - group: {fileID: 8767121117271302126, guid: f72fcde2a52624b4fbd53ecad772191f, type: 3}
+    characterCount: 4
     minWaveTime: 10

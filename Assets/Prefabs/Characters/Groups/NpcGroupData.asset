@@ -10,12 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6aada2f077b9c8a41a53c98c037ab95f, type: 3}
-  m_Name: PrototypeGroup
+  m_Name: NpcGroupData
   m_EditorClassIdentifier: 
-  maxScarePoints: 5
-  targetScareLevel: 1
   characters:
-  - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
-  - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
-  - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
   - {fileID: 7392591026461995597, guid: 60f706453123397429ad815289c332f6, type: 3}
