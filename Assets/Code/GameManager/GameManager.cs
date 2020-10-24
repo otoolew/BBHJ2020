@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
 
     #region Events
     public delegate void GameDelegate();
+    public event GameDelegate GameStarted;
     public event GameDelegate GameOver;
 
     public delegate void GroupDelegate(NpcGroup group);
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour {
 
         _activeGroups = new List<NpcGroup>();
 
-        IsGameActive = true;
+        IsGameActive = false;
         CurrentFearAmount = 0;
 
         NextSpawnIndex = 0;
@@ -107,6 +108,11 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     #region Game Loop Methods
+    public void StartGame() {
+        IsGameActive = true;
+        GameStarted?.Invoke();
+    }
+
     public void EndGame() {
         IsGameActive = false;
         GameOver?.Invoke();
