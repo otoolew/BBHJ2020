@@ -15,7 +15,6 @@ public class NpcCharacter : Character {
     public override Animator Animator { get => _animator; set => _animator = value; }
 
     public override float MoveSpeed { get { return _characterData.moveSpeed; } }
-
     public override float RotationSpeed { get { return _characterData.rotationSpeed; } }
 
     public NpcGroup ActiveGroup { get; protected set; }
@@ -34,6 +33,9 @@ public class NpcCharacter : Character {
     #region Methods
     public void SetupCharacterGroup(NpcGroup group) {
         ActiveGroup = group;
+
+        _navAgent.speed = MoveSpeed;
+        _navAgent.angularSpeed = RotationSpeed;
     }
 
     public override void MoveAnimation(float value) {
