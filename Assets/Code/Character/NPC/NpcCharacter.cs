@@ -42,6 +42,10 @@ public class NpcCharacter : Character {
         _animator.SetFloat("MoveRate", value);
     }
 
+    public void AddScareValue(float fearValue) {
+
+    }
+
     private void OnValidate() {
         if (_navAgent == null) {
             Debug.LogError("Set NavMesh Comp");

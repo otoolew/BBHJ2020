@@ -10,6 +10,7 @@ public class NpcGroup : MonoBehaviour {
 
     public NpcCharacter[] ActiveCharacters { get; private set; }
     public NpcPathwayPoint CurrentPathPoint { get; private set; }
+    public float GroupFearTotal { get; set; }
     #endregion
 
     #region MonoBehavior Overrides
@@ -51,6 +52,8 @@ public class NpcGroup : MonoBehaviour {
     }
 
     public void DestroyGroup() {
+        GameManager.Instance.CurrentFearAmount += GroupFearTotal;
+
         for (int x=0; x < ActiveCharacters.Length; x++) {
             Destroy(ActiveCharacters[x].gameObject);
         }
