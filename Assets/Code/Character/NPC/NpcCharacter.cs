@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class NpcCharacter : Character {
@@ -43,7 +41,7 @@ public class NpcCharacter : Character {
     }
 
     public void AddScareValue(float fearValue) {
-
+        ActiveGroup.AddFearValue(fearValue);
     }
 
     private void OnValidate() {
