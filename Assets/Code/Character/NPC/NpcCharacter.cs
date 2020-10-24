@@ -12,6 +12,8 @@ public class NpcCharacter : Character {
     [SerializeField] private Animator _animator;
     public override Animator Animator { get => _animator; set => _animator = value; }
 
+    [SerializeField] private ParticleSystem _scareParticle;
+
     public override float MoveSpeed { get { return _characterData.moveSpeed; } }
     public override float RotationSpeed { get { return _characterData.rotationSpeed; } }
 
@@ -41,6 +43,8 @@ public class NpcCharacter : Character {
     }
 
     public void AddScareValue(float fearValue) {
+        _scareParticle.Play();
+        Animator.SetTrigger("Terrified");
         ActiveGroup.AddFearValue(fearValue);
     }
 
