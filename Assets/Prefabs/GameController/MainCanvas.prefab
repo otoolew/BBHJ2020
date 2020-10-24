@@ -274,6 +274,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Fear Score:
 
+
+    Very big, well done, trust us. We toally finished this
+    feature, and it''s not WIP at all
+
+    You just collected way to much fear to
+    show here. Excellent work.
+
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1256,7 +1263,30 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'How To Play:
 
-    To Do'
+    WASD to move
+
+    Spacebar to interact with Consoles
+
+
+
+    Your
+    objective is to collect as much fear as possible, to please the haunted house.
+
+
+    To
+    do this, you can activate the scares within the haunted house at the Scare consoles.
+
+    Victims
+    near a scare will generate fear.
+
+    Some scares last longer
+
+    Some scares
+    are short lived, but generate far more fear.
+
+
+    If you don''t collect enough
+    fear by the end of the night, the house may come for you!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
