@@ -42,17 +42,11 @@ public class ScareConsole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //count_Text.text = cooldownTimer.GetIntTime().ToString();
-        //if(cooldownTimer.Finished == true)
-        //{
-        //    status_Text.text = "READY";
-        //    count_Text.text = "";
-        //}
+
     }
 
     private void OnFire(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log(gameObject.name + " Interaction!");
         if (cooldownTimer.Finished)
         {
             scareAttraction.FireScare();

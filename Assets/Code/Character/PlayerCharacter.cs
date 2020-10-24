@@ -92,7 +92,6 @@ public class PlayerCharacter : Character
     /// </summary>
     public void OnInteract(InputAction.CallbackContext callbackContext) 
     {
-        Debug.Log("Player Interaction!");
     }
     #endregion
 }

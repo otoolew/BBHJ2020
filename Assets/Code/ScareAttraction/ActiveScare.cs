@@ -33,10 +33,12 @@ public class ActiveScare : ScareAttraction
 
     private void OnTriggerEnter(Collider other)
     {
-        Character npcCharacter = other.GetComponent<Character>();
+        NpcCharacter npcCharacter = other.GetComponent<NpcCharacter>();
+        Debug.Log(other.name + " Entered!");
+
         if (npcCharacter != null)
         {
-            Debug.Log(npcCharacter.name + " Was Scared!");
+            npcCharacter.AddScareValue(10);
         }
     }
 
