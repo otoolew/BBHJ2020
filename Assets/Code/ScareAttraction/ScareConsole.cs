@@ -18,14 +18,17 @@ public class ScareConsole : MonoBehaviour
     [SerializeField] private Timer cooldownTimer;
     public Timer CooldownTimer { get => cooldownTimer; set => cooldownTimer = value; }
 
-    [SerializeField] private TMP_Text status_Text;
-    public TMP_Text Status_Text { get => status_Text; set => status_Text = value; }
+    //[SerializeField] private TMP_Text status_Text;
+    //public TMP_Text Status_Text { get => status_Text; set => status_Text = value; }
 
-    [SerializeField] private TMP_Text count_Text;
-    public TMP_Text Count_Text { get => count_Text; set => count_Text = value; }
+    //[SerializeField] private TMP_Text count_Text;
+    //public TMP_Text Count_Text { get => count_Text; set => count_Text = value; }
 
     [SerializeField] private ScareAttraction scareAttraction;
     public ScareAttraction ScareAttraction { get => scareAttraction; set => scareAttraction = value; }
+
+    [SerializeField] private bool attractionRunning;
+    public bool AttractionRunning { get => attractionRunning; set => attractionRunning = value; }
 
     private void Awake()
     {
@@ -42,20 +45,28 @@ public class ScareConsole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        count_Text.text = cooldownTimer.GetIntTime().ToString();
-        if(cooldownTimer.Finished == true)
+        if (cooldownTimer.Finished)
         {
-            status_Text.text = "READY";
-            count_Text.text = "";
+            scareAttraction.gameObject.SetActive(false);
         }
+        else
+        {
+            scareAttraction.gameObject.SetActive(true);
+        }
+        //count_Text.text = cooldownTimer.GetIntTime().ToString();
+        //if(cooldownTimer.Finished == true)
+        //{
+        //    status_Text.text = "READY";
+        //    count_Text.text = "";
+        //}
     }
 
     private void OnFire(InputAction.CallbackContext callbackContext)
     {
         Debug.Log(gameObject.name + " Interaction!");
+
         if (cooldownTimer.Finished)
         {
-            scareAttraction.FireScare();
             cooldownTimer.ResetTimer();
         }
         else
