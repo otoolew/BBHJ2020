@@ -8,6 +8,9 @@ public class GhostScare : ScareAttraction
     public Animator Animator { get => animator; set => animator = value; }
     [SerializeField] private float resetTime;
     public float ResetTime { get => resetTime; set => resetTime = value; }
+    public override Timer Timer { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public override SphereCollider ScareCollider { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public override bool IsActive { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,7 @@ public class GhostScare : ScareAttraction
     }
     public override void FireScare()
     {
-        base.FireScare();
+        //base.FireScare();
         Debug.Log("Ghost Scare");
         if (Timer.Finished)
         {
